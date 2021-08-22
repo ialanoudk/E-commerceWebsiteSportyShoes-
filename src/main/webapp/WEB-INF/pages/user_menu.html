@@ -1,0 +1,34 @@
+					<ul>
+					 	<li class="list_item active"><a href="${pageContext.request.contextPath}/">Home</a></li>
+					   
+						<c:if test="${sessionScope.userLoggedIn == null || sessionScope.id ==0}"> 
+							<li class="list_item"><a href="${pageContext.request.contextPath}/login">Login</a></li> 
+				        </c:if>
+						<c:if test="${sessionScope.userLoggedIn != null && sessionScope.id >0}"> 
+							<li class="list_item"><a href="./cart">My Cart</a></li>
+							<li class="list_item"><a href="./myorders">My Orders</a></li>
+							<li class="list_item"><a href="./logout">logout</a></li>
+				        </c:if>
+					</ul>
+					<h4>Categories</h4>
+					<ul>  
+						
+						<c:forEach items="${listCategories}" var="categories">
+							<li class="list_item"><a href="./?id=${categories.id}">${categories.name}</a></li>
+						</c:forEach>
+					</ul>
+					<ul>  
+						<li class="list_item active"><a href="${pageContext.request.contextPath}/admin/">Admin</a></li>
+						<c:if test="${sessionScope.adminLoggedIn != null && sessionScope.id >0}"> 
+							<li class="list_item"><a href="${pageContext.request.contextPath}/admin/newcategory">Add Category</a></li>
+							<li class="list_item"><a href="${pageContext.request.contextPath}/admin/categories">List of categories</a></li>
+							<li class="list_item"><a href="${pageContext.request.contextPath}/admin/newproduct">Add Product</a></li>
+							<li class="list_item"><a href="${pageContext.request.contextPath}/admin/products">List of Products</a></li> 
+							<li class="list_item"><a href="${pageContext.request.contextPath}/admin/orders">List of Orders</a></li>
+							<li class="list_item"><a href="${pageContext.request.contextPath}/admin/users">List of Users</a></li>
+							<li class="list_item"><a href="${pageContext.request.contextPath}/admin/profile">Admin Profile</a></li>
+							<li class="list_item"><a href="${pageContext.request.contextPath}/admin/logout">logout</a></li>
+				        </c:if>
+					</ul>
+					
+						
